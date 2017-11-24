@@ -1,4 +1,4 @@
-class Tenant < ActiveRecord::Base
+class Tenant < ApplicationRecord
 
   before_create :generate_api_key
   
