@@ -8,5 +8,44 @@
 
 # rest api
 # https://www.youtube.com/watch?v=QojnRc7SS9o
+
+# RailsCast 352
 # token auth
 # https://www.youtube.com/watch?v=AiVj2xyTBcw
+
+
+http://localhost:3000/api/v1/questions
+http://localhost:3000/api/v1/questions/1
+
+# RailsCast 350
+
+# good request
+curl 'http://localhost:3000/api/v1/questions?api_key=5670cc310a4538a7d486442d7cb8baab' -I
+
+#bad request
+curl 'http://localhost:3000/api/v1/questions?api_key=badbadbadbadbadbadbadbadbadbaddd' -I
+
+#private request
+http://localhost:3000/api/v1/questions/19.json?api_key=5670cc310a4538a7d486442d7cb8baab
+
+#All
+http://localhost:3000/api/v1/questions?api_key=5670cc310a4538a7d486442d7cb8baab
+#Specific
+http://localhost:3000/api/v1/questions/1?api_key=5670cc310a4538a7d486442d7cb8baab
+
+#http://guides.rubyonrails.org/v3.2.8/active_record_querying.html
+
+To add new field "director" to this schema, I created Migration by:
+rails g migration AddDirectorToMovie director:string
+
+The name "AddDirectorToMovie" means much. "Add" creates "change" method in Migration, and "ToMovie" indicates the table concerned about is "movies."
+So, I got a migration file, db/migrate/20120323210944_add_director_to_movie.rb whose contents is:
+
+class AddDirectorToMovie < ActiveRecord::Migration
+  def change
+    add_column :movies, :director, :string
+  end
+end
+
+One last thing to do is:
+rake db:migrate
