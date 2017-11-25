@@ -3,3 +3,10 @@
 # --------------------------------------------------------------------------------------------
 
 #http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html#upgrading-from-rails-4-2-to-rails-5-0
+
+# Upgrades are a pain...
+
+# rest api
+# https://www.youtube.com/watch?v=QojnRc7SS9o
+# token auth
+# https://www.youtube.com/watch?v=AiVj2xyTBcw
