@@ -49,3 +49,8 @@ end
 
 One last thing to do is:
 rake db:migrate
+
+$ rails g migration AddRequestCountToTenant request_count:integer
+      invoke  active_record
+      create    db/migrate/20171125174828_add_request_count_to_tenant.rb
+$ rake db:migrate

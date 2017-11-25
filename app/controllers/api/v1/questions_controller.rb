@@ -16,8 +16,9 @@ module Api
 
             private 
             def restrict_access
-                api_key = Tenant.find_by_api_key(params[:api_key])
-                head :unauthorized unless api_key
+                @tenant = Tenant.find_by_api_key(params[:api_key])
+                head :unauthorized unless @tenant 
+                @tenant.increment_counter
             end
 
         end

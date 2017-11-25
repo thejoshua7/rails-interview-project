@@ -1,6 +1,11 @@
 class Tenant < ApplicationRecord
   before_create :generate_api_key
-  
+
+  def increment_counter
+    self.increment(:request_count)
+    self.save
+  end
+
   private
 
   def generate_api_key
