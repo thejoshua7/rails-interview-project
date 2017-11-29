@@ -16,6 +16,7 @@
   </div>
 </nav>
 <br/>
+
 <div style="width:90%;padding-left:10%;">
   <ul class="list-group">
     <li class="list-group-item active">Entity:<span class="badge">Count</span></li>
@@ -34,7 +35,7 @@
   <ul class="list-group">
       <li class="list-group-item active">Tenant:<span class="badge">Requests</span></li>
     <% @tenants.each do |t| %>
-      <li class="list-group-item">Tenant:<%= t.name %> <span class="badge"><%= t.request_count? ? t.request_count : 0 %></span></li>
+      <li class="list-group-item"><%= t.name %> <span class="badge"><%= t.request_count? ? t.request_count : 0 %></span></li>
     <% end %>
   </ul>
 </div>

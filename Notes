@@ -35,22 +35,46 @@ http://localhost:3000/api/v1/questions/1?api_key=5670cc310a4538a7d486442d7cb8baa
 
 #http://guides.rubyonrails.org/v3.2.8/active_record_querying.html
 
-To add new field "director" to this schema, I created Migration by:
-rails g migration AddDirectorToMovie director:string
-
-The name "AddDirectorToMovie" means much. "Add" creates "change" method in Migration, and "ToMovie" indicates the table concerned about is "movies."
-So, I got a migration file, db/migrate/20120323210944_add_director_to_movie.rb whose contents is:
-
-class AddDirectorToMovie < ActiveRecord::Migration
-  def change
-    add_column :movies, :director, :string
-  end
-end
-
-One last thing to do is:
-rake db:migrate
-
 $ rails g migration AddRequestCountToTenant request_count:integer
       invoke  active_record
       create    db/migrate/20171125174828_add_request_count_to_tenant.rb
 $ rake db:migrate
+
+
+
+--------------------------
+#       Postgresql
+--------------------------
+https://www.devbridge.com/articles/migrating-from-mssql-to-postgresql/#
+
+#commands cheat sheet
+https://gist.github.com/Kartones/dd3ff5ec5ea238d4c546
+
+#list databases
+psql -l 
+psql -d ria_development
+
+
+# reset the test database
+rails db:environment:set RAILS_ENV=test
+bundle exec rake db:drop RAILS_ENV=test
+bundle exec rake db:create RAILS_ENV=test
+bundle exec rake db:schema:load RAILS_ENV=test
+
+http://matthewlehner.net/rails-api-testing-guidelines/
+
+https://www.airpair.com/ruby-on-rails/posts/building-a-restful-api-in-a-rails-application
+
+
+
+
+$ rails generate rspec:install
+
+#run tests
+$ bundle exec rspec
+
+
+#stop rails server and pgamin
+postgres=# drop database ria_test;
+postgres=# create database ria_test with template ria_development;
+

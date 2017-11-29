@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class DashboardControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  test "can view the dashboard" do
+    get "/"
+    assert_select "nav" 
+  end
 end

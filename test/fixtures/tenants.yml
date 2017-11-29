@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  api_key: MyString
+  name: TenantOne
+  api_key: "7e67a9f113a41b0f426a4fbff021e063"
 
 two:
-  name: MyString
-  api_key: MyString
+  name: TenantTwo
+  api_key: "f5d57f4a6cf4b378a4adfbe19f96df25"
+
+three:
+  name: TenantUnknown
+  api_key: "ffffffffffffffffffffffffffffffff"

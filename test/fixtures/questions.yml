@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  private: false
+  id: 19
+  title: This is a sample private question.
+  private: true
   user_id: 1
   #asker_id: 1
 
 two:
-  title: MyString
+  id: 20
+  title: This is a sample public question.
   private: false
   user_id: 1
   #asker_id: 1
