@@ -35,9 +35,30 @@
   <ul class="list-group">
       <li class="list-group-item active">Tenant:<span class="badge">Requests</span></li>
     <% @tenants.each do |t| %>
-      <li class="list-group-item"><%= t.name %> <span class="badge"><%= t.request_count? ? t.request_count : 0 %></span></li>
+      <li class="list-group-item"><%= t.name %><span class="badge"><%= t.request_count? ? t.request_count : 0 %></span></li>
     <% end %>
   </ul>
+</div>
+
+<div class="table-responsive" style="width:90%;padding-left:10%;">
+  <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Tenant</th>
+      <th scope="col">Api Key</th>
+      <th scope="col">Api Request</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @tenants.each do |t| %>
+      <tr>
+        <th class="text-nowrap" scope="row"><%= t.name %></th>
+        <td><%= t.api_key %></td>
+        <td align="center"><%= link_to "Api Request", "/api/v1/questions/20?api_key=#{t.api_key}", target: :_blank, class: "btn btn-primary" %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 </div>
 
 </body>

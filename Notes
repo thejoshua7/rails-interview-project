@@ -78,3 +78,73 @@ $ bundle exec rspec
 postgres=# drop database ria_test;
 postgres=# create database ria_test with template ria_development;
 
+
+#rails console
+rails c
+
+Tenant.find_by_api_key('5670cc310a4538a7d486442d7cb8baab')
+Tenant.find_by_name('Mertz Inc')
+
+Tenant.where(request_count: 0..9999)
+Tenant.where("request_count > 0")
+Tenant.where("request_count IS NULL")
+Tenant.where("request_count IS NULL").limit(3)
+
+# load last question and then load user
+q = Question.last
+User.find_by_id(q.user_id)
+
+
+#wraps db changes in a transaction and rolls back
+rails c --sandbox
+
+app.dashboard_path
+app.get _
+app.class
+app.cookies
+app.response.headers
+pp _; nil
+puts app.response.body
+reload!
+
+# disable sql output in rails server
+ActiveRecord::Base.logger.level = 1
+
+# add settings to ~/.irbrc
+ActiveRecord::Base.logger.level = 1 if defined? ActiveRecord::Base
+# you can even code user specific functions or helper functions
+def y(obj)
+  puts obj.to_yaml
+end
+
+
+t = Tenant.first
+puts t.to_yaml
+
+
+# -----------------------------------------------------------------
+#                            Nice Gems
+# -----------------------------------------------------------------
+#Awesome Print
+require 'awesome_print'
+ap Tenant.first.attributes
+
+#clipboard
+require 'clipboard'
+Clipboard.copy 'foobar'
+Clipboard.paste
+
+
+# -----------------------------------------------------------------
+
+#update existing rows in db migrate
+#Tenant.update_all(request_count: 0)
+
+
+
+
+
+
+
+
+

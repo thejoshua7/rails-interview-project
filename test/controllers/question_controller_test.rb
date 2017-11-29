@@ -31,11 +31,13 @@ class QuestionControllerTest < ActionDispatch::IntegrationTest
     # call load with api_key=7e67a9f113a41b0f426a4fbff021e063 10 times
     # check to make sure request_count was incremented
     test "validate the request count for the tenant is working" do
-        byebug
         @tenant = Tenant.find_by_api_key('7e67a9f113a41b0f426a4fbff021e063')
 
         if (@tenant) 
-            @tenant.request_count = @tenant.request_count.blank? ? 0 : @tenant.request_count
+            if @tenant.request_count.blank? 
+                @tenant.request_count = 0
+                @tenant.save
+            end
             previous_count = @tenant.request_count 
         end
 
@@ -44,7 +46,8 @@ class QuestionControllerTest < ActionDispatch::IntegrationTest
             puts x
         end
 
-        return assert @tenant.request_count == previous_count + 10
+        expected_count = previous_count+10
+        return assert @tenant.request_count == expected_count
     end 
 
 end
