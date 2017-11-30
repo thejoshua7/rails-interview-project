@@ -140,9 +140,32 @@ Clipboard.paste
 #update existing rows in db migrate
 #Tenant.update_all(request_count: 0)
 
+t = Tenant.last
+t.update(name: "Balisteri and Sons")
+
+q = Question.find([1, 3, 4])
+irb(main):025:0> q.each do |x|
+irb(main):026:1* puts x.title
+irb(main):027:1> end
+
+Question.where.not(private: true).limit(20)
 
 
 
+# -----------------------------------------------------------------
+# gem 'awesome_rails_console' <- check this out. Looks promising.
+# bundle install
+# rails generate awesome_rails_console:install
+# -----------------------------------------------------------------
+
+#Memoization
+class FooController < ApplicationController
+  before_filter :set_user
+  private
+  def set_user
+    @current_user ||= User.find(session[:user_id])
+  end
+end
 
 
 
