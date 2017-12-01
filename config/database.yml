@@ -30,7 +30,9 @@ development:
 test:
   <<: *default
   database: ria_test
-
+  username: joshua
+  password: <%= ENV[ENV['SecureLocation']] %>
+  
 production:
   <<: *default
   database: ria_production

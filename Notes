@@ -167,6 +167,10 @@ class FooController < ApplicationController
   end
 end
 
+# map applies method to all elements in collection
+t = Tenant.all
+t.map {|t| t.id }
+
 
 
 

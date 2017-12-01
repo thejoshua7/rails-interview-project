@@ -16,7 +16,7 @@ module Api
 
             private 
             def restrict_access
-                @tenant = Tenant.find_by_api_key(params[:api_key])
+                @tenant = Tenant.find_by(api_key: params[:api_key])
                 if (@tenant) 
                     @tenant.increment_counter
                 else
